@@ -1,8 +1,6 @@
-import ItemClassList from "./ItemClassList";
 import { getItemClass } from "./ItemClassList";
-import { getAspect } from "./AspectList";
 import ItemMod from "src/models/ItemMod";
-import { ModType, ModRarity, Slot, ItemClass, ItemBody } from "src/models";
+import { ItemBody } from "src/models";
 import { getBodyMod } from "./ItemBodyModList";
 import { getImportantStatsMod } from "./ItemBodyImportantStatsModList";
 
@@ -539,7 +537,7 @@ let ItemBodies: ItemBody[] = [
   },
   {
     id: "0053",
-    name: "Starsword",
+    name: "Energy Blade",
     class: getItemClass("Exotic Weapon"),
     attackStat: "WIL",
     // prettier-ignore
@@ -560,7 +558,6 @@ let ItemBodies: ItemBody[] = [
 ];
 
 export function getBody(name: string): ItemBody {
-  console.log(ItemBodies);
   let result = ItemBodies.find((element) => element.name === name);
   if (!result) result = ItemBodies[0];
   return result;

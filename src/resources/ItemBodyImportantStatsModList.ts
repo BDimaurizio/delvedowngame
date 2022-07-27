@@ -396,7 +396,7 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
   },
   {
     id: "I053",
-    name: "Starsword",
+    name: "Energy Blade",
     Attack: 5,
     Accuracy: 5,
     Deflect: 5,

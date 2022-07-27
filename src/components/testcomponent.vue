@@ -22,7 +22,8 @@ export default defineComponent({
   setup(props, context) {
     const clicked = function () {
       let item = ItemService.getTest();
-      console.log(item);
+      console.log(item.computeFinalStats);
+      console.log(item.test(5));
     };
 
     return { clicked };

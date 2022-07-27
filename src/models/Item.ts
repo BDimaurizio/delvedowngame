@@ -1,16 +1,9 @@
 import ItemMod from "./ItemMod";
 import { Slot, ModRarity, Aspect, ItemClass, ItemBody } from "."; //remember typescript is installed globally :()
-import { ImportNamespaceSpecifier } from "@typescript-eslint/types/dist/generated/ast-spec";
 import Aspects, { getAspect } from "src/resources/AspectList";
 
 export interface ItemInterface {
-  //computed properties
-  fullname: string;
-  id: string;
-  importantStatsComputed: ItemMod;
-  finalStatsComputed: ItemMod;
-  aspects: Aspect[];
-  //item component properties
+  //properties
   blurse: ItemMod;
   quality: ItemMod;
   material: ItemMod;
@@ -18,24 +11,18 @@ export interface ItemInterface {
   unique: ItemMod;
   body: ItemBody;
   enchantment: ItemMod;
+  itemWorld: ItemMod;
   plus: ItemMod[];
-
-  //functions
-  readonly computeFullName: string;
-  readonly computeid: string;
+  //computed properties
+  readonly fullName: string;
+  readonly id: string;
   readonly computeImportantStats: ItemMod;
   readonly computeAspects: Aspect[];
   readonly computeFinalStats: ItemMod;
 }
 
 export default class Item implements ItemInterface {
-  //computed properties
-  public id: string = "";
-  public fullname: string = "";
-  public importantStatsComputed: ItemMod = new ItemMod();
-  public finalStatsComputed: ItemMod = new ItemMod();
-  public aspects: Aspect[] = [getAspect("NONE")];
-  //item component properties
+  //properties
   public body!: ItemBody;
   public unique!: ItemMod;
   public blurse!: ItemMod;
@@ -43,10 +30,11 @@ export default class Item implements ItemInterface {
   public material!: ItemMod;
   public socket!: ItemMod;
   public enchantment!: ItemMod;
+  public itemWorld!: ItemMod;
   public plus!: ItemMod[];
 
   //functions
-  get computeFullName(): string {
+  get fullName(): string {
     let stringBuilder = "";
     if (this.blurse.modType != "NONE") {
       if (this.blurse.modType == "BLESSING") {
@@ -76,14 +64,16 @@ export default class Item implements ItemInterface {
     if (this.enchantment.name != "NONE") {
       stringBuilder = stringBuilder + this.enchantment.name + " ";
     }
+    if (this.itemWorld.name != "NONE") {
+      stringBuilder = stringBuilder + this.itemWorld.description + " ";
+    }
     stringBuilder = stringBuilder.trim();
-    this.fullname = stringBuilder;
     return stringBuilder;
   }
 
-  get computeid(): string {
+  get id(): string {
     //item id format: (each [] is the 4 digit id of each body/mod):
-    //[security check add up all digits][body][blurse][quality][material][socket][unique][enchantment][how many plus there are][plus][plus][plus][plus]...
+    //[security check add up all digits][body][blurse][quality][material][socket][unique][enchantment][itemworld][how many plus there are][plus][plus][plus][plus]...
     let stringBuilder =
       this.body.id +
       this.blurse.id +
@@ -91,7 +81,8 @@ export default class Item implements ItemInterface {
       this.material.id +
       this.socket.id +
       this.unique.id +
-      this.enchantment.id;
+      this.enchantment.id +
+      this.itemWorld.id;
 
     stringBuilder = stringBuilder + String(this.plus.length).padStart(4, "0");
 
@@ -105,7 +96,6 @@ export default class Item implements ItemInterface {
 
     stringBuilder = String(security).padStart(4, "0") + stringBuilder;
 
-    this.id = stringBuilder;
     return stringBuilder;
   }
 
@@ -119,7 +109,8 @@ export default class Item implements ItemInterface {
       this.material.important1 +
       this.socket.important1 +
       this.unique.important1 +
-      this.enchantment.important1;
+      this.enchantment.important1 +
+      this.itemWorld.important1;
     let important2: number =
       this.body.bodyMod.important2 +
       this.blurse.important2 +
@@ -127,7 +118,8 @@ export default class Item implements ItemInterface {
       this.material.important2 +
       this.socket.important2 +
       this.unique.important2 +
-      this.enchantment.important2;
+      this.enchantment.important2 +
+      this.itemWorld.important2;
     let importanta1: number =
       this.body.bodyMod.importanta1 +
       this.blurse.importanta1 +
@@ -135,7 +127,8 @@ export default class Item implements ItemInterface {
       this.material.importanta1 +
       this.socket.importanta1 +
       this.unique.importanta1 +
-      this.enchantment.importanta1;
+      this.enchantment.importanta1 +
+      this.itemWorld.importanta1;
     let importanta2: number =
       this.body.bodyMod.importanta2 +
       this.blurse.importanta2 +
@@ -143,7 +136,8 @@ export default class Item implements ItemInterface {
       this.material.importanta2 +
       this.socket.importanta2 +
       this.unique.importanta2 +
-      this.enchantment.importanta2;
+      this.enchantment.importanta2 +
+      this.itemWorld.importanta2;
     for (let i = 0; i < this.plus.length; i++) {
       important1 = important1 + this.plus[i].important1;
       important2 = important1 + this.plus[i].important2;
@@ -176,7 +170,6 @@ export default class Item implements ItemInterface {
       }
     }
     importantStatsBuilder.modType = "IMPORTANTSTATSCOMPUTED";
-    this.importantStatsComputed = importantStatsBuilder;
     return importantStatsBuilder;
   }
 
@@ -190,6 +183,7 @@ export default class Item implements ItemInterface {
       this.socket.aspect,
       this.unique.aspect,
       this.enchantment.aspect,
+      this.itemWorld.aspect,
     ];
 
     for (let i = 0; i < this.plus.length; i++) {
@@ -200,16 +194,13 @@ export default class Item implements ItemInterface {
 
     AspectList = removeAllFromArray(uniq, Aspects[0]);
 
-    this.aspects = AspectList;
     return AspectList;
   }
 
   get computeFinalStats(): ItemMod {
-    this.computeImportantStats;
-    this.computeAspects;
     let finalStats = new ItemMod();
-    finalStats.name = this.computeFullName;
-    finalStats.id = this.computeid;
+    finalStats.name = this.fullName;
+    finalStats.id = this.id;
     finalStats.modType = "FINALSTATSCOMPUTED";
 
     let modList: ItemMod[] = [
@@ -220,7 +211,8 @@ export default class Item implements ItemInterface {
       this.socket,
       this.unique,
       this.enchantment,
-      this.importantStatsComputed,
+      this.itemWorld,
+      this.computeImportantStats,
     ];
 
     if (this.plus) modList = modList.concat(this.plus);
@@ -236,8 +228,11 @@ export default class Item implements ItemInterface {
     //TODO make it compute an array of the traits/skills you get too
 
     finalStats.modType = "FINALSTATSCOMPUTED";
-    this.finalStatsComputed = finalStats;
     return finalStats;
+  }
+
+  test(output: number): number {
+    return this.computeFinalStats.Clarity + output;
   }
 }
 
