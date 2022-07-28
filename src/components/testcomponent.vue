@@ -1,5 +1,5 @@
 <template>
-  <q-btn @click="clicked()"> </q-btn>
+  <q-btn @click="clicked()">☆</q-btn>
 </template>
 
 <script>
@@ -22,8 +22,7 @@ export default defineComponent({
   setup(props, context) {
     const clicked = function () {
       let item = ItemService.getTest();
-      console.log(item.computeFinalStats);
-      console.log(item.test(5));
+      console.log(item);
     };
 
     return { clicked };

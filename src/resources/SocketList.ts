@@ -4,16 +4,26 @@ import { getAspect } from "./AspectList";
 
 let SocketMods: Partial<ItemMod>[] = [
   {
-    id: "0000",
-    name: "Socket",
-    description: "Socket",
+    name: "NONE",
+    description: "NONE", //no socket
+  },
+  {
+    name: "Empty",
+    description: "It contains a gem socket, but it is empty.",
+  },
+  {
+    name: "Ruby",
+    description: " is inlaid with rubies",
   },
 ];
 
 export function getSocketMod(name: string): ItemMod {
-  let result = SocketMods.find((element) => element.name === name);
-  if (!result) result = SocketMods[0];
+  let resultIndex = SocketMods.findIndex((element) => element.name === name);
+  if (resultIndex == -1) resultIndex = 0;
+  let result = SocketMods[resultIndex];
   if (result.modType == undefined) result.modType = "SOCKET";
+  if (result.id == undefined)
+    result.id = "5" + String(resultIndex).padStart(4, "0");
   let merged: ItemMod = { ...new ItemMod(), ...result };
   return merged;
 }

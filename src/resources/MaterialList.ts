@@ -4,16 +4,25 @@ import { getAspect } from "./AspectList";
 
 let MaterialMods: Partial<ItemMod>[] = [
   {
-    id: "0000",
-    name: "Material",
+    name: "Driftwood",
     description: "Material",
+    Finesse: -1,
+  },
+  {
+    name: "Cheese",
+    description: "yummy yum yum",
+    AGI: 80000,
+    FoodDrinkAffinity: 80000,
   },
 ];
 
 export function getMaterialMod(name: string): ItemMod {
-  let result = MaterialMods.find((element) => element.name === name);
-  if (!result) result = MaterialMods[0];
+  let resultIndex = MaterialMods.findIndex((element) => element.name === name);
+  if (resultIndex == -1) resultIndex = 0;
+  let result = MaterialMods[resultIndex];
   if (result.modType == undefined) result.modType = "MATERIAL";
+  if (result.id == undefined)
+    result.id = "4" + String(resultIndex).padStart(4, "0");
   let merged: ItemMod = { ...new ItemMod(), ...result };
   return merged;
 }

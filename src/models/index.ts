@@ -2,6 +2,7 @@ import ItemMod from "./ItemMod";
 import Aspects from "src/resources/AspectList";
 
 export type AttackingStat =
+  | "NONE"
   | "VIT"
   | "STR"
   | "DEX"
@@ -36,10 +37,13 @@ export type ModType =
   | "SOCKET"
   | "BODYMOD"
   | "ENCHANTMENT"
+  | "ITEMWORLD"
   | "PLUS"
   | "IMPORTANTSTATS"
   | "IMPORTANTSTATSCOMPUTED"
-  | "FINALSTATSCOMPUTED";
+  | "FINALSTATSCOMPUTED"
+  | "TRAITMOD"
+  | "MISC";
 
 export type ModRarity =
   | "NONE"
@@ -48,9 +52,18 @@ export type ModRarity =
   | "RARE"
   | "SUPER RARE"
   | "ULTRA RARE"
-  | "STARTING"
-  | "IMPORTANTSTATSSIGNIFIERMOD"
-  | "IMPORTANTSTATSCOMPUTEDMOD";
+  | "STARTING";
+
+export type Tag =
+  | "NONE"
+  | "SHOWMATERIAL"
+  | "HIDEMATERIAL"
+  | "QUESTITEM"
+  | "EXAMPLETAG"
+  | "EXAMPLETAG"
+  | "EXAMPLETAG";
+
+export type Target = "NONE" | "SELF" | "ANY" | "ALLY" | "ENEMY" | "SPECIAL";
 
 export class Aspect {
   public name!: string;

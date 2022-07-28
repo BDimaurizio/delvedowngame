@@ -4,16 +4,21 @@ import { getAspect } from "./AspectList";
 
 let Blessings: Partial<ItemMod>[] = [
   {
-    id: "0000",
-    name: "Blessing",
-    description: "Blessing",
+    name: "Blessing of Example",
+    description: "An example blessing",
+    LUK: 5,
+    VIT: -10,
+    important1: 3,
   },
 ];
 
 export function getBlessing(name: string): ItemMod {
-  let result = Blessings.find((element) => element.name === name);
-  if (!result) result = Blessings[0];
+  let resultIndex = Blessings.findIndex((element) => element.name === name);
+  if (resultIndex == -1) resultIndex = 0;
+  let result = Blessings[resultIndex];
   if (result.modType == undefined) result.modType = "BLESSING";
+  if (result.id == undefined)
+    result.id = "1" + String(resultIndex).padStart(4, "0");
   let merged: ItemMod = { ...new ItemMod(), ...result };
   return merged;
 }

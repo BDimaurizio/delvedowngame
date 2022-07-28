@@ -1,10 +1,11 @@
-import { ModType, ModRarity, Aspect, ItemClass } from ".";
+import { ModType, ModRarity, Aspect, ItemClass, Tag } from ".";
 import Aspects from "src/resources/AspectList";
-import { getItemClass } from "src/resources/ItemClassList";
+import Trait from "./Trait";
+import Skill from "./Skill";
 
 export default class ItemMod {
   //general info
-  public id: string = "0000";
+  public id: string = "N0000";
   public modType: ModType = "NONE";
   public name: string = "NONE";
   public rarity: ModRarity = "NONE";
@@ -153,8 +154,9 @@ export default class ItemMod {
   //other hidden stats
   public Loyalty: number = 0;
   public Locked: boolean = false;
-  public TargetItemClass: ItemClass = getItemClass("Misc");
+  public TargetItemClass: ItemClass[] = [];
+  public Tags: Tag[] = [];
   //special effects
-  //*************public Traits: Trait[];
-  //*************public Skills: Trait[];
+  public Traits: Trait[] = [];
+  public Skills: Skill[] = [];
 }

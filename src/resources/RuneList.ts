@@ -4,17 +4,19 @@ import { getAspect } from "./AspectList";
 
 let RuneMods: Partial<ItemMod>[] = [
   {
-    id: "0000",
-    name: "Rune",
-    description: "Rune",
+    name: "Rune of Rune-ness",
+    description: "RuneRuneRune",
     modType: "MAJORRUNE",
   },
 ];
 
 export function getRuneMod(name: string): ItemMod {
-  let result = RuneMods.find((element) => element.name === name);
-  if (!result) result = RuneMods[0];
+  let resultIndex = RuneMods.findIndex((element) => element.name === name);
+  if (resultIndex == -1) resultIndex = 0;
+  let result = RuneMods[resultIndex];
   if (result.modType == undefined) result.modType = "MINORRUNE";
+  if (result.id == undefined)
+    result.id = "2" + String(resultIndex).padStart(4, "0");
   let merged: ItemMod = { ...new ItemMod(), ...result };
   return merged;
 }

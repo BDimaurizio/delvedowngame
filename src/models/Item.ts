@@ -1,6 +1,8 @@
 import ItemMod from "./ItemMod";
-import { Slot, ModRarity, Aspect, ItemClass, ItemBody } from "."; //remember typescript is installed globally :()
+import { Slot, ModRarity, Aspect, ItemClass, ItemBody, Tag } from "."; //remember typescript is installed globally :()
 import Aspects, { getAspect } from "src/resources/AspectList";
+import Skill from "./Skill";
+import Trait from "./Trait";
 
 export interface ItemInterface {
   //properties
@@ -19,19 +21,47 @@ export interface ItemInterface {
   readonly computeImportantStats: ItemMod;
   readonly computeAspects: Aspect[];
   readonly computeFinalStats: ItemMod;
+  readonly statBlock: string[];
+  readonly description: string;
+  readonly verboseDescription: string;
+  readonly skills: Skill[];
+  readonly traits: Trait[];
+  readonly tags: Tag[];
 }
 
 export default class Item implements ItemInterface {
   //properties
-  public body!: ItemBody;
-  public unique!: ItemMod;
-  public blurse!: ItemMod;
-  public quality!: ItemMod;
-  public material!: ItemMod;
-  public socket!: ItemMod;
-  public enchantment!: ItemMod;
-  public itemWorld!: ItemMod;
-  public plus!: ItemMod[];
+  public body: ItemBody;
+  public unique: ItemMod;
+  public blurse: ItemMod;
+  public quality: ItemMod;
+  public material: ItemMod;
+  public socket: ItemMod;
+  public enchantment: ItemMod;
+  public itemWorld: ItemMod;
+  public plus: ItemMod[];
+
+  constructor(
+    body: ItemBody,
+    unique: ItemMod = new ItemMod(),
+    blurse: ItemMod = new ItemMod(),
+    quality: ItemMod = new ItemMod(),
+    material: ItemMod = new ItemMod(),
+    socket: ItemMod = new ItemMod(),
+    enchantment: ItemMod = new ItemMod(),
+    itemWorld: ItemMod = new ItemMod(),
+    plus: ItemMod[] = []
+  ) {
+    this.body = body;
+    this.unique = unique;
+    this.blurse = blurse;
+    this.quality = quality;
+    this.material = material;
+    this.socket = socket;
+    this.enchantment = enchantment;
+    this.itemWorld = itemWorld;
+    this.plus = plus;
+  }
 
   //functions
   get fullName(): string {
@@ -50,15 +80,15 @@ export default class Item implements ItemInterface {
     if (this.quality.name != "NONE") {
       stringBuilder = stringBuilder + this.quality.name + " ";
     }
-    if (this.material.name != "NONE") {
+    if (
+      this.material.name != "NONE" &&
+      !this.unique.Tags.includes("HIDEMATERIAL")
+    ) {
       stringBuilder = stringBuilder + this.material.name + " ";
-    }
-    if (this.socket.name != "NONE") {
-      stringBuilder = stringBuilder + this.socket.name + " ";
     }
     if (this.unique.name != "NONE") {
       stringBuilder = stringBuilder + this.unique.name + " ";
-    } else if (this.body.name) {
+    } else if (this.body.name != "NONE" && this.body.name != "MISC") {
       stringBuilder = stringBuilder + this.body.name + " ";
     }
     if (this.enchantment.name != "NONE") {
@@ -72,9 +102,27 @@ export default class Item implements ItemInterface {
   }
 
   get id(): string {
-    //item id format: (each [] is the 4 digit id of each body/mod):
+    //item id format: (each [] is the 5 digit id of each body/mod):
     //[security check add up all digits][body][blurse][quality][material][socket][unique][enchantment][itemworld][how many plus there are][plus][plus][plus][plus]...
-    let stringBuilder =
+    /*
+    id identifiers:
+    blessing: 1xxxx
+    rune: 2xxxx
+    quality: 3xxxx
+    material: 4xxxx
+    socket: 5xxxx
+    curse: 6xxxx
+    unique: 7xxxx
+    enchantment: 8xxxx
+    itemworld: 9xxxx
+    plus: 0xxxx
+    bodymods: Bxxxx
+    importantmods: Ixxxx
+    misc items: Mxxxx
+    quest items: Qxxxx
+    trait mods: Txxxx
+    */
+    let stringBuilder: string =
       this.body.id +
       this.blurse.id +
       this.quality.id +
@@ -84,17 +132,17 @@ export default class Item implements ItemInterface {
       this.enchantment.id +
       this.itemWorld.id;
 
-    stringBuilder = stringBuilder + String(this.plus.length).padStart(4, "0");
+    stringBuilder = stringBuilder + String(this.plus.length).padStart(5, "0");
 
     for (let i = 0; i < this.plus.length; i++) {
-      stringBuilder = stringBuilder + this.plus[i];
+      stringBuilder = stringBuilder + this.plus[i].id;
     }
 
     let security = stringBuilder.split("").reduce((acc, curr) => {
       return acc + Number(curr);
     }, 0);
 
-    stringBuilder = String(security).padStart(4, "0") + stringBuilder;
+    stringBuilder = String(security).padStart(5, "0") + stringBuilder;
 
     return stringBuilder;
   }
@@ -225,10 +273,86 @@ export default class Item implements ItemInterface {
         }
       }
     }
-    //TODO make it compute an array of the traits/skills you get too
+    finalStats.Traits = this.traits;
+    finalStats.Skills = this.skills;
+    finalStats.Tags = this.tags;
 
     finalStats.modType = "FINALSTATSCOMPUTED";
     return finalStats;
+  }
+
+  get statBlock(): string[] {
+    return [];
+  }
+
+  get description(): string {
+    return "";
+  }
+
+  get verboseDescription(): string {
+    return "";
+  }
+
+  get traits(): Trait[] {
+    let traitArray: Trait[] = [];
+
+    traitArray = traitArray.concat(this.blurse.Traits);
+    traitArray = traitArray.concat(this.quality.Traits);
+    traitArray = traitArray.concat(this.material.Traits);
+    traitArray = traitArray.concat(this.socket.Traits);
+    traitArray = traitArray.concat(this.unique.Traits);
+    traitArray = traitArray.concat(this.body.bodyMod.Traits);
+    traitArray = traitArray.concat(this.enchantment.Traits);
+    traitArray = traitArray.concat(this.itemWorld.Traits);
+    for (let i = 0; i < this.plus.length; i++) {
+      traitArray = traitArray.concat(this.plus[i].Traits);
+    }
+    //traitArray = [...new Set(traitArray)]; I want duplicates
+
+    return traitArray;
+  }
+
+  get skills(): Skill[] {
+    let skillArray: Skill[] = [];
+
+    skillArray = skillArray.concat(this.blurse.Skills);
+    skillArray = skillArray.concat(this.quality.Skills);
+    skillArray = skillArray.concat(this.material.Skills);
+    skillArray = skillArray.concat(this.socket.Skills);
+    skillArray = skillArray.concat(this.unique.Skills);
+    skillArray = skillArray.concat(this.body.bodyMod.Skills);
+    skillArray = skillArray.concat(this.enchantment.Skills);
+    skillArray = skillArray.concat(this.itemWorld.Skills);
+    for (let i = 0; i < this.plus.length; i++) {
+      skillArray = skillArray.concat(this.plus[i].Skills);
+    }
+    skillArray = [...new Set(skillArray)];
+
+    return skillArray;
+  }
+
+  get tags(): Tag[] {
+    let tagArray: Tag[] = [];
+
+    tagArray = tagArray.concat(this.blurse.Tags);
+    tagArray = tagArray.concat(this.quality.Tags);
+    tagArray = tagArray.concat(this.material.Tags);
+    tagArray = tagArray.concat(this.socket.Tags);
+    tagArray = tagArray.concat(this.unique.Tags);
+    tagArray = tagArray.concat(this.body.bodyMod.Tags);
+    tagArray = tagArray.concat(this.enchantment.Tags);
+    tagArray = tagArray.concat(this.itemWorld.Tags);
+    //let skillArray = this.skills;
+    //let traitArray = this.traits;
+    for (let i = 0; i < this.plus.length; i++) {
+      tagArray = tagArray.concat(this.plus[i].Tags);
+      //tagArray = tagArray.concat(skillArray[i].tags);
+      //tagArray = tagArray.concat(traitArray[i].tags);
+      //the tags of a skill/trait are not considered a tag of the item its on... perhaps
+    }
+    tagArray = [...new Set(tagArray)];
+
+    return tagArray;
   }
 
   test(output: number): number {

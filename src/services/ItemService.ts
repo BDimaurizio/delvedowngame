@@ -1,83 +1,100 @@
 import ItemMod from "src/models/ItemMod";
 import Item from "src/models/Item";
 import { ItemBody, ModType } from "src/models";
-import { getAspect } from "src/resources/AspectList";
 import { getBlessing } from "src/resources/BlessingList";
 import { getCurse } from "src/resources/CurseList";
 import { getEnchantment } from "src/resources/EnchantmentList";
-import { getImportantStatsMod } from "src/resources/ItemBodyImportantStatsModList";
-import { getBody } from "src/resources/ItemBodyList";
-import { getBodyMod } from "src/resources/ItemBodyModList";
-import { getItemClass } from "src/resources/ItemClassList";
+import { getBody, getMiscItemBody } from "src/resources/ItemBodyList";
 import { getMaterialMod } from "src/resources/MaterialList";
 import { getPlusMod } from "src/resources/PlusList";
 import { getQualityMod } from "src/resources/QualityList";
 import { getRuneMod } from "src/resources/RuneList";
 import { getSocketMod } from "src/resources/SocketList";
 import { getUnique } from "src/resources/UniqueList";
+import { getItemWorldMod } from "src/resources/ItemWorldModList";
+import { getMisc, getQuestItem } from "src/resources/MiscItemList";
+import Character from "src/models/Character";
+import { getSkill } from "src/resources/SkillList";
 
 export default class ItemService {
   static getTest() {
-    let testBody = getBody("Dagger");
-    let testBlessing = getUnique("TEST");
-    testBlessing.name = "Blessing of whatever";
-    testBlessing.important1 = 5;
-    testBlessing.VIT = -10;
-    testBlessing.modType = "BLESSING";
-    testBlessing.aspect = getAspect("Blood");
-    let testQuality = new ItemMod();
-    testQuality.name = "Masterwork";
-    testQuality.important1 = 3;
-    testQuality.important2 = 7;
-    testQuality.importanta1 = 1;
-    let testMaterial = new ItemMod();
-    testMaterial.name = "Titanium";
-    testMaterial.aspect = getAspect("Blood");
-    let testSocket = new ItemMod();
-    testSocket.name = "Ruby";
-    testSocket.aspect = getAspect("The Sea");
-    let testUnique = new ItemMod();
-    testUnique.name = "Ritual Hooksword";
-    let testEnchantment = new ItemMod();
-    testEnchantment.name = "Of Lightning";
+    let char = new Character();
+    char.naturalSkills.push(getSkill(""));
+    window.localStorage.setItem("playerCharacter", JSON.stringify(char));
+    char = new Character();
+    char = this.retrieveCharacterFromLocalstorage();
+    char.naturalSkills[0].skillCast(char, [char]);
 
     let item = this.ConstructItem(
-      testBody,
-      testBlessing,
-      testQuality,
-      testMaterial,
-      testSocket,
-      testUnique,
-      testEnchantment,
-      []
+      getBody("Dagger"),
+      [
+        getBlessing(""),
+        getCurse(""),
+        getMaterialMod("Cheese"),
+        getQualityMod(""),
+        getRuneMod(""),
+        getSocketMod(""),
+      ],
+      [getPlusMod("")]
     );
-    return item;
-  }
-
-  static ConstructItem(
-    body: ItemBody,
-    blurse: ItemMod,
-    quality: ItemMod,
-    material: ItemMod,
-    socket: ItemMod,
-    unique: ItemMod,
-    enchantment: ItemMod,
-    plus: ItemMod[]
-  ) {
-    let ItemConstruct = new Item();
-    ItemConstruct.body = body;
-    ItemConstruct.blurse = blurse;
-    ItemConstruct.quality = quality;
-    ItemConstruct.material = material;
-    ItemConstruct.socket = socket;
-    ItemConstruct.unique = unique;
-    ItemConstruct.enchantment = enchantment;
-    ItemConstruct.plus = plus;
-    return this.ComputeItemProperties(ItemConstruct);
+    char.MAINHAND = item;
+    return char;
   }
 
   static ComputeItemProperties(item: Item) {
     item.computeFinalStats;
     return item;
+  }
+
+  // CONSTRUCT ITEM: (BODY, [LIST OF MODS TO BE APPLIED DOES NOT NEED TO BE ORDERED], [PLUS])
+  // prettier-ignore
+  static ConstructItem( body: ItemBody, mods: ItemMod[] = [], plus: ItemMod[] = [] ): Item {
+    return new Item(
+      body,
+      mods.find((element) => element.modType === "UNIQUE" || element.modType === "MISC"),
+      mods.find(
+        (element) =>
+          element.modType === "BLESSING" ||
+          element.modType === "CURSE" ||
+          element.modType === "MAJORRUNE" ||
+          element.modType === "MINORRUNE"
+      ),
+      mods.find((element) => element.modType === "QUALITY"),
+      mods.find((element) => element.modType === "MATERIAL"),
+      mods.find((element) => element.modType === "SOCKET"),
+      mods.find((element) => element.modType === "ENCHANTMENT"),
+      mods.find((element) => element.modType === "ITEMWORLD"),
+      plus
+    );
+  }
+
+  static fastConstructMiscItem(name: string, material: string = "NONE"): Item {
+    return new Item(
+      getMiscItemBody(),
+      getMisc(name),
+      undefined,
+      undefined,
+      getMaterialMod(material)
+    );
+  }
+
+  static fastConstructQuestItem(name: string, material: string = "NONE"): Item {
+    return new Item(
+      getMiscItemBody(),
+      getQuestItem(name),
+      undefined,
+      undefined,
+      getMaterialMod(material)
+    );
+  }
+
+  static retrieveCharacterFromLocalstorage(): Character {
+    let chara: Character;
+    let retrival = window.localStorage.getItem("playerCharacter");
+    chara = JSON.parse(retrival!);
+    for (let i = 0; i < chara.naturalSkills.length; i++) {
+      chara.naturalSkills[i] = getSkill(chara.naturalSkills[i].name);
+    }
+    return chara;
   }
 }

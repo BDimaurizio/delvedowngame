@@ -4,11 +4,9 @@ import { getAspect } from "./AspectList";
 
 let ImportantStatsMods: Partial<ItemMod>[] = [
   {
-    id: "I000",
     name: "NONE",
   },
   {
-    id: "I001",
     name: "Dagger",
     DEX: 1,
     INT: 2,
@@ -16,7 +14,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Clarity: 4,
   },
   {
-    id: "I002",
     name: "Knuckles",
     VIT: 1,
     STR: 2,
@@ -24,7 +21,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     PhysicalResist: 4,
   },
   {
-    id: "I003",
     name: "Hatchet",
     STR: 1,
     CriticalDamage: 2,
@@ -32,7 +28,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     PhysicalAmplification: 4,
   },
   {
-    id: "I004",
     name: "Wakizashi",
     AGI: 1,
     STR: 2,
@@ -40,7 +35,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Deflect: 4,
   },
   {
-    id: "I005",
     name: "Wand",
     INT: 1,
     LUK: 2,
@@ -48,11 +42,9 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Clarity: 4,
   },
   {
-    id: "I006",
     name: "",
   },
   {
-    id: "I007",
     name: "Shortsword",
     STR: 1,
     DEX: 2,
@@ -60,7 +52,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Accuracy: 4,
   },
   {
-    id: "I008",
     name: "Hooksword",
     STR: 1,
     WIL: 2,
@@ -68,7 +59,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Deflect: 4,
   },
   {
-    id: "I009",
     name: "Scimitar",
     STR: 1,
     AGI: 2,
@@ -76,7 +66,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Finesse: 4,
   },
   {
-    id: "I010",
     name: "Cutlass",
     AGI: 1,
     STR: 2,
@@ -84,7 +73,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I011",
     name: "Rapier",
     DEX: 1,
     STR: 2,
@@ -92,7 +80,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Parry: 4,
   },
   {
-    id: "I012",
     name: "Sabre",
     STR: 1,
     DEX: 2,
@@ -100,7 +87,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I013",
     name: "Mace",
     STR: 1,
     VIT: 2,
@@ -108,7 +94,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I014",
     name: "Flail",
     VIT: 1,
     STR: 2,
@@ -116,7 +101,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalChance: 4,
   },
   {
-    id: "I015",
     name: "Club",
     FAI: 1,
     WIL: 2,
@@ -124,7 +108,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Truestrike: 4,
   },
   {
-    id: "I016",
     name: "Hammer",
     STR: 1,
     FAI: 2,
@@ -132,7 +115,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalDamage: 4,
   },
   {
-    id: "I017",
     name: "Sceptre",
     CHA: 1,
     WIL: 2,
@@ -140,7 +122,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Leadership: 4,
   },
   {
-    id: "I018",
     name: "Orb",
     WIL: 1,
     INT: 2,
@@ -148,7 +129,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Clarity: 4,
   },
   {
-    id: "I019",
     name: "Tome",
     INT: 1,
     WIL: 2,
@@ -156,11 +136,9 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalChance: 4,
   },
   {
-    id: "I020",
     name: "",
   },
   {
-    id: "I021",
     name: "Axe",
     STR: 1,
     CriticalDamage: 2,
@@ -168,7 +146,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     PhysicalAmplification: 4,
   },
   {
-    id: "I022",
     name: "Longsword",
     STR: 1,
     DEX: 2,
@@ -176,7 +153,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Accuracy: 4,
   },
   {
-    id: "I023",
     name: "Katana",
     AGI: 1,
     STR: 2,
@@ -184,7 +160,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Finesse: 4,
   },
   {
-    id: "I024",
     name: "Warhammer",
     STR: 1,
     FAI: 2,
@@ -192,7 +167,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalDamage: 4,
   },
   {
-    id: "I025",
     name: "Spear",
     AGI: 1,
     STR: 2,
@@ -200,7 +174,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I026",
     name: "Staff",
     INT: 1,
     WIL: 2,
@@ -208,11 +181,9 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Clarity: 4,
   },
   {
-    id: "I027",
     name: "",
   },
   {
-    id: "I028",
     name: "Greatsword",
     STR: 1,
     DEX: 2,
@@ -220,7 +191,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalDamage: 4,
   },
   {
-    id: "I029",
     name: "Broadsword",
     STR: 1,
     DEX: 2,
@@ -228,7 +198,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Deflect: 4,
   },
   {
-    id: "I030",
     name: "Greataxe",
     STR: 1,
     CriticalDamage: 2,
@@ -236,7 +205,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     PhysicalAmplification: 4,
   },
   {
-    id: "I031",
     name: "Greatstaff",
     INT: 1,
     STR: 2,
@@ -244,7 +212,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I032",
     name: "Pike",
     STR: 1,
     AGI: 2,
@@ -252,7 +219,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Truestrike: 4,
   },
   {
-    id: "I033",
     name: "Halberd",
     STR: 1,
     WIL: 2,
@@ -260,7 +226,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalChance: 4,
   },
   {
-    id: "I034",
     name: "Scythe",
     STR: 1,
     CHA: 2,
@@ -268,7 +233,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I035",
     name: "Glaive",
     STR: 1,
     VIT: 2,
@@ -276,11 +240,9 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Finesse: 4,
   },
   {
-    id: "I036",
     name: "",
   },
   {
-    id: "I037",
     name: "Throwing Knife",
     DEX: 1,
     INT: 2,
@@ -288,7 +250,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalChance: 4,
   },
   {
-    id: "I038",
     name: "Throwing Axe",
     STR: 1,
     CriticalDamage: 2,
@@ -296,7 +257,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     PhysicalAmplification: 4,
   },
   {
-    id: "I039",
     name: "Javelin",
     AGI: 1,
     STR: 2,
@@ -304,7 +264,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Truestrike: 4,
   },
   {
-    id: "I040",
     name: "Stone",
     VIT: 1,
     STR: 2,
@@ -312,7 +271,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I041",
     name: "Chakram",
     STR: 1,
     DEX: 2,
@@ -320,17 +278,14 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Accuracy: 4,
   },
   {
-    id: "I042",
     name: "Bomb",
     LUK: 1,
     FlameAmplification: 3,
   },
   {
-    id: "I043",
     name: "",
   },
   {
-    id: "I044",
     name: "Shortbow",
     AGI: 1,
     DEX: 2,
@@ -338,7 +293,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Clarity: 4,
   },
   {
-    id: "I045",
     name: "Longbow",
     AGI: 1,
     DEX: 2,
@@ -346,7 +300,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     Attack: 4,
   },
   {
-    id: "I046",
     name: "Greatbow",
     AGI: 1,
     STR: 2,
@@ -354,7 +307,6 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalDamage: 4,
   },
   {
-    id: "I047",
     name: "Crossbow",
     AGI: 1,
     STR: 2,
@@ -362,53 +314,50 @@ let ImportantStatsMods: Partial<ItemMod>[] = [
     CriticalDamage: 4,
   },
   {
-    id: "I048",
     name: "",
   },
   {
-    //resume
-    id: "I049",
     name: "Hand Cannon",
     AGI: 1,
-
-    Attack: 9,
-    //piercing attack ALWAYS
-    //chance to backfire
-    //reload: locked out of evasion/deflect/parry/ward when fired
+    INT: 2,
+    CriticalChance: 3,
+    Attack: 4,
   },
   {
-    id: "I050",
     name: "Blunderbus",
-    Attack: 10,
-    //piercing attack ALWAYS
-    //choice to do melee or ranged (ranged has a harsh damage penalty)
-    //reload: locked out of evasion/deflect/parry/ward when fired
+    STR: 1,
+    AGI: 2,
+    Attack: 3,
+    CriticalDamage: 4,
   },
   {
-    id: "I051",
     name: "",
   },
   {
-    id: "I052",
     name: "Whip",
-    Finesse: 8,
-    //add finesse to normal attacks
+    DEX: 1,
+    WIL: 2,
+    Finesse: 3,
+    BeastsWard: 4,
   },
   {
-    id: "I053",
     name: "Energy Blade",
-    Attack: 5,
-    Accuracy: 5,
-    Deflect: 5,
-    Parry: 5,
-    Ward: 5,
+    WIL: 1,
+    STR: 2,
+    Attack: 3,
+    Ward: 4,
   },
 ];
 
 export function getImportantStatsMod(name: string): ItemMod {
-  let result = ImportantStatsMods.find((element) => element.name === name);
-  if (!result) result = ImportantStatsMods[0];
+  let resultIndex = ImportantStatsMods.findIndex(
+    (element) => element.name === name
+  );
+  if (resultIndex == -1) resultIndex = 0;
+  let result = ImportantStatsMods[resultIndex];
   if (result.modType == undefined) result.modType = "IMPORTANTSTATS";
+  if (result.id == undefined)
+    result.id = "I" + String(resultIndex).padStart(4, "0");
   let merged: ItemMod = { ...new ItemMod(), ...result };
   return merged;
 }

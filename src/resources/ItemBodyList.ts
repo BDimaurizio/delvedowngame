@@ -6,17 +6,17 @@ import { getImportantStatsMod } from "./ItemBodyImportantStatsModList";
 
 let ItemBodies: ItemBody[] = [
   {
-    id: "0000",
+    id: "00000",
     name: "NONE",
     class: getItemClass("Misc"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0001",
+    id: "00001",
     name: "Dagger",
     class: getItemClass("Light Weapon"),
     attackStat: "DEX",
@@ -26,7 +26,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0002",
+    id: "00002",
     name: "Knuckles",
     class: getItemClass("Light Weapon"),
     attackStat: "STR",
@@ -36,7 +36,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0003",
+    id: "00003",
     name: "Hatchet",
     class: getItemClass("Light Weapon"),
     attackStat: "STR",
@@ -46,7 +46,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0004",
+    id: "00004",
     name: "Wakizashi",
     class: getItemClass("Light Weapon"),
     attackStat: "DEX",
@@ -56,7 +56,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0005",
+    id: "00005",
     name: "Wand",
     class: getItemClass("Light Weapon"),
     attackStat: "STR",
@@ -66,17 +66,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0006",
+    id: "00006",
     name: "",
     class: getItemClass("Light Weapon"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0007",
+    id: "00007",
     name: "Shortsword",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -86,7 +86,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0008",
+    id: "00008",
     name: "Hooksword",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -96,7 +96,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0009",
+    id: "00009",
     name: "Scimitar",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -106,7 +106,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0010",
+    id: "00010",
     name: "Cutlass",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -116,7 +116,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0011",
+    id: "00011",
     name: "Rapier",
     class: getItemClass("Medium Weapon"),
     attackStat: "DEX",
@@ -126,7 +126,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0012",
+    id: "00012",
     name: "Sabre",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -136,7 +136,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0013",
+    id: "00013",
     name: "Mace",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -146,7 +146,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0014",
+    id: "00014",
     name: "Flail",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -156,7 +156,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0015",
+    id: "00015",
     name: "Club",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -166,7 +166,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0016",
+    id: "00016",
     name: "Hammer",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -176,7 +176,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0017",
+    id: "00017",
     name: "Sceptre",
     class: getItemClass("Medium Weapon"),
     attackStat: "STR",
@@ -186,7 +186,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0018",
+    id: "00018",
     name: "Orb",
     class: getItemClass("Medium Weapon"),
     attackStat: "WIL",
@@ -196,7 +196,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0019",
+    id: "00019",
     name: "Tome",
     class: getItemClass("Medium Weapon"),
     attackStat: "INT",
@@ -206,17 +206,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0020",
+    id: "00020",
     name: "",
     class: getItemClass("Medium Weapon"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0021",
+    id: "00021",
     name: "Axe",
     class: getItemClass("Heavy Weapon"),
     attackStat: "STR",
@@ -226,7 +226,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0022",
+    id: "00022",
     name: "Longsword",
     class: getItemClass("Heavy Weapon"),
     attackStat: "STR",
@@ -236,7 +236,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0023",
+    id: "00023",
     name: "Katana",
     class: getItemClass("Heavy Weapon"),
     attackStat: "STR",
@@ -246,7 +246,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0024",
+    id: "00024",
     name: "Warhammer",
     class: getItemClass("Heavy Weapon"),
     attackStat: "STR",
@@ -256,7 +256,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0025",
+    id: "00025",
     name: "Spear",
     class: getItemClass("Heavy Weapon"),
     attackStat: "STR",
@@ -266,7 +266,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0026",
+    id: "00026",
     name: "Staff",
     class: getItemClass("Heavy Weapon"),
     attackStat: "STR",
@@ -276,17 +276,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0027",
+    id: "00027",
     name: "",
     class: getItemClass("Heavy Weapon"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0028",
+    id: "00028",
     name: "Greatsword",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -296,7 +296,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0029",
+    id: "00029",
     name: "Broadsword",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -306,7 +306,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0030",
+    id: "00030",
     name: "Greataxe",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -316,7 +316,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0031",
+    id: "00031",
     name: "Greatstaff",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -326,7 +326,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0032",
+    id: "00032",
     name: "Pike",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -336,7 +336,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0033",
+    id: "00033",
     name: "Halberd",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -346,7 +346,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0034",
+    id: "00034",
     name: "Scythe",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -356,7 +356,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0035",
+    id: "00035",
     name: "Glaive",
     class: getItemClass("Very Heavy Weapon"),
     attackStat: "STR",
@@ -366,17 +366,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0036",
+    id: "00036",
     name: "",
     class: getItemClass("Very Heavy Weapon"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0037",
+    id: "00037",
     name: "Throwing Knife",
     class: getItemClass("Throwing Weapon"),
     attackStat: "DEX",
@@ -386,7 +386,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0038",
+    id: "00038",
     name: "Throwing Axe",
     class: getItemClass("Throwing Weapon"),
     attackStat: "STR",
@@ -396,7 +396,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0039",
+    id: "00039",
     name: "Javelin",
     class: getItemClass("Throwing Weapon"),
     attackStat: "STR",
@@ -406,7 +406,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0040",
+    id: "00040",
     name: "Stone",
     class: getItemClass("Throwing Weapon"),
     attackStat: "STR",
@@ -416,7 +416,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0041",
+    id: "00041",
     name: "Chakram",
     class: getItemClass("Throwing Weapon"),
     attackStat: "STR",
@@ -426,7 +426,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0042",
+    id: "00042",
     name: "Bomb",
     class: getItemClass("Throwing Weapon"),
     attackStat: "LUK",
@@ -436,17 +436,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0043",
+    id: "00043",
     name: "",
     class: getItemClass("Throwing Weapon"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0044",
+    id: "00044",
     name: "Shortbow",
     class: getItemClass("Ranged Weapon"),
     attackStat: "AGI",
@@ -456,7 +456,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0045",
+    id: "00045",
     name: "Longbow",
     class: getItemClass("Ranged Weapon"),
     attackStat: "AGI",
@@ -466,7 +466,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0046",
+    id: "00046",
     name: "Greatbow",
     class: getItemClass("Ranged Weapon"),
     attackStat: "AGI",
@@ -476,7 +476,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0047",
+    id: "00047",
     name: "Crossbow",
     class: getItemClass("Ranged Weapon"),
     attackStat: "AGI",
@@ -486,17 +486,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0048",
+    id: "00048",
     name: "",
     class: getItemClass("Ranged Weapon"),
-    attackStat: "AGI",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0049",
+    id: "00049",
     name: "Hand Cannon",
     class: getItemClass("Firearm"),
     attackStat: "AGI",
@@ -506,7 +506,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0050",
+    id: "00050",
     name: "Blunderbus",
     class: getItemClass("Firearm"),
     attackStat: "LUK",
@@ -516,17 +516,17 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0051",
+    id: "00051",
     name: "",
     class: getItemClass("Firearm"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
     // prettier-ignore
   },
   {
-    id: "0052",
+    id: "00052",
     name: "Whip",
     class: getItemClass("Exotic Weapon"),
     attackStat: "DEX",
@@ -536,7 +536,7 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0053",
+    id: "00053",
     name: "Energy Blade",
     class: getItemClass("Exotic Weapon"),
     attackStat: "WIL",
@@ -546,13 +546,24 @@ let ItemBodies: ItemBody[] = [
     // prettier-ignore
   },
   {
-    id: "0054",
+    id: "00054",
     name: "",
     class: getItemClass("Exotic Weapon"),
-    attackStat: "LUK",
+    attackStat: "NONE",
     // prettier-ignore
     get bodyMod(): ItemMod {return getBodyMod(this.name);},
     get importantStatsMod(): ItemMod {return getImportantStatsMod(this.name);},
+    // prettier-ignore
+  },
+  ///...............
+  {
+    id: "99990",
+    name: "MISC",
+    class: getItemClass("Misc"),
+    attackStat: "NONE",
+    // prettier-ignore
+    get bodyMod(): ItemMod {return getBodyMod("NONE");},
+    get importantStatsMod(): ItemMod {return getImportantStatsMod("NONE");},
     // prettier-ignore
   },
 ];
@@ -561,4 +572,9 @@ export function getBody(name: string): ItemBody {
   let result = ItemBodies.find((element) => element.name === name);
   if (!result) result = ItemBodies[0];
   return result;
+}
+
+export function getMiscItemBody(): ItemBody {
+  let result = ItemBodies.find((element) => element.name === "MISC");
+  return result!;
 }
